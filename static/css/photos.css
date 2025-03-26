@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+body{
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    background-color: #212121;
+    font-family: 'Poppins', sans-serif;
+}
+.contenedor{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.contenedor img{
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.contenedor img:hover{
+    transform: scale(1.1);
+    transition: all 0.5s;
+}
+.contenedor img:active{
+    transform: scale(1);
+    transition: all 0.5s;
+}

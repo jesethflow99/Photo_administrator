@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/photos.css')}}">
+    <title>Hola {{username}} a tus fotos</title>
+</head>
+<body>
+    {% if username %}
+        <h1>Hola {{username}} a tus fotos</h1>
+        <ul>
+            {% for photo in lista %}
+                <div class="contenedor">
+                    <img src="{{dir}}/{{photo}}" alt="foto">
+                    <i>{{photo}}</i>
+                </div>
+                
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h1>Debes iniciar sesión</h1>
+    {% endif %}
+</body>
+</html>

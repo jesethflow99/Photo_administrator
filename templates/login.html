@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <title>Document</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}" role="alert">
+                {{message}}
+              </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+<div class="container">
+    <input type="checkbox" id="signup_toggle">
+    <form class="form" action="user/" method="POST">
+        <div class="form_front">
+            <div class="form_details">Login</div>
+            <input placeholder="Username" class="input" type="text" name="username">
+            <input placeholder="Token" class="input" type="text" name="token">
+            <button class="btn">Login</button>
+
+        </div>
+
+    </form>
+</div>
+</body>
+</html>
