@@ -1,25 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/photos.css')}}">
-    <title>Hola {{username}} a tus fotos</title>
-</head>
-<body>
-    {% if username %}
-        <h1>Hola {{username}} a tus fotos</h1>
-        <ul>
-            {% for photo in lista %}
-                <div class="contenedor">
-                    <img src="{{dir}}/{{photo}}" alt="foto">
-                    <i>{{photo}}</i>
-                </div>
-                
-            {% endfor %}
-        </ul>
-    {% else %}
-        <h1>Debes iniciar sesión</h1>
-    {% endif %}
-</body>
-</html>
+
+    
+{% extends 'base.html' %}
+{% block content %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/photos.css')}}">
+
+{% if username %}
+<h1>Hola {{username}} Bienvenido a tus fotos</h1>
+    <div class="galeria">
+        {% for photo in lista %}
+        <div class="contenedor">
+            <img src="{{ url_for('static', filename='imagenes/' + username + '/' + photo) }}" alt="foto" class="clickable-img">
+            <i class="nombre_img">{{photo}}</i>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="select_{{photo}}">
+              </div>
+              
+        </div>
+        
+        {% endfor %}
+    </div>
+    
+    <button type="button" id="select" class="btn btn-outline-primary">Hacer Seleccion</button>
+{% else %}
+<h1>Debes iniciar sesión</h1>
+{% endif %}
+
+
+<script src="{{ url_for('static', filename='js/image.js') }}"></script>
+{% endblock %}
+

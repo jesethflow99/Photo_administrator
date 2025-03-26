@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-    <title>Document</title>
-</head>
+{% extends 'base.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+
 <body>
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
@@ -29,5 +26,5 @@
 
     </form>
 </div>
-</body>
-</html>
+ 
+{% endblock %}
