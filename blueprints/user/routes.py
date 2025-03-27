@@ -1,9 +1,8 @@
-from flask import Blueprint,render_template,request,flash,redirect,url_for,session
+from flask import Blueprint,render_template,request,flash,redirect,url_for,session,jsonify
 import os
 from dotenv import load_dotenv
 from db import User
 from controllers.eventos import ver_galeria
-from blueprints.admin.routes import admin
 
 load_dotenv()
 
@@ -39,3 +38,20 @@ def index():
 def cerrar_sesion():
     session.clear()
     return redirect(url_for("login"))
+
+
+@user.route("/guardar_seleccion", methods=["POST"])
+def guardar_seleccion():
+    data = request.get_json()
+    seleccionadas = data.get("imagenes", [])
+
+    if not seleccionadas:
+        return jsonify({"mensaje": "No se seleccionaron imágenes"}), 400
+
+    print("Imágenes seleccionadas:", seleccionadas)
+
+    with open(f"static/imagenes/{session.get('username')}/seleccion.txt", "w") as f:
+        for imagen in seleccionadas:
+            f.write(imagen + "\n")
+
+    return jsonify({"mensaje": "Selección guardada con éxito", "imagenes": seleccionadas})

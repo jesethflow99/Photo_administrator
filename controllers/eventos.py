@@ -11,5 +11,7 @@ def listar_carpetas():
 
 def ver_galeria(username):
     lista=os.listdir(f"{os.getenv('DIRECTORIO')}/{username}")
+    filtro=["seleccion.txt"]
+    lista=[i for i in lista if i not in filtro]
     return lista
 

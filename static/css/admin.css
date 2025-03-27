@@ -4,3 +4,42 @@
     box-sizing: border-box;
 }
 
+body{
+    background-color: #212121 ;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    flex-direction: column;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    background-color: #525252 !important;
+    color: white ;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    padding: 20px;
+    
+}
+.table th{
+    background-color: #525252;
+    color: white;
+    padding: 10px 0;
+    font-size: 18px;
+}
+.table td{
+    padding: 10px 0;
+    font-size: 16px;
+    border-bottom: 1px solid #525252;
+}
+.table td{
+    background-color: #525252 !important;
+    color: white;
+}

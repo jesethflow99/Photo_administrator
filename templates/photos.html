@@ -21,11 +21,16 @@
     </div>
     
     <button type="button" id="select" class="btn btn-outline-primary">Hacer Seleccion</button>
+    <a  class="btn btn-outline-danger" href="cerrar_sesion">Salir</a>
 {% else %}
 <h1>Debes iniciar sesión</h1>
 {% endif %}
 
+<div id="contador-seleccion" class="contador">
+    Imágenes seleccionadas: <span id="contador">0</span>
+</div>
 
 <script src="{{ url_for('static', filename='js/image.js') }}"></script>
+<script src="{{ url_for('static', filename='js/selection.js') }}"></script>
 {% endblock %}
 

@@ -26,7 +26,7 @@ static_dir = os.path.join(os.getcwd(), "static", "imagenes")  # Carpeta en stati
 
 # Verificar si la ruta existe y es un enlace simbólico
 if os.path.exists(static_dir) or os.path.islink(static_dir):
-    os.unlink(static_dir)  # Eliminar enlace simbólico existente
+    os.unlink(static_dir)  
 
 # Crear nuevo enlace simbólico
 try:

@@ -14,7 +14,7 @@ def index():
         token=session.get("token")
         if username == "admin" and token== os.getenv("ADMIN_PASSWORD"):
             lista=User.read()
-            return render_template("admin.html",lista=lista)
+            return render_template("admin.html",lista=lista if lista else [],title="Panel de administración")
     else:
         return redirect(url_for("cerrar_sesion"))
 
@@ -33,10 +33,12 @@ def agregar_usuarios():
         usuarios=User.read()
         print(lista)
         print(usuarios)
-        usuario=[i[0] for i in usuarios]
+        
+        usuario = [i[0] for i in usuarios] if usuarios else []
+
         print(usuario)
         for i in lista:
-            if i not in usuario:
+            if i not in usuario :
                 user=User(i)    
                 user.create()
         flash("Usuarios creados con éxito")

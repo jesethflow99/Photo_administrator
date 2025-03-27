@@ -8,12 +8,14 @@ h1{
     font-size: 40px;
     color: white;
     text-align: center;
+    user-select: none;
 }
 
 .nombre_img{
     font-size: 20px;
     color: white;
     text-align: center;
+    
 } 
 
 body {
@@ -55,7 +57,6 @@ body {
     transition: transform 0.3s ease-in-out;
 }
 
-/* Estilos cuando la imagen está expandida */
 .clickable-img.expanded {
     position: fixed;
     top: 50%;
@@ -69,10 +70,23 @@ body {
     border-radius: 10px;
 }
 
-/* Evita el desplazamiento del fondo cuando la imagen está expandida */
 body.expanded-mode {
     overflow: hidden;
     background-color: rgba(0, 0, 0, 0.9);
 }
 
+.btn{
+    margin: 20px;
+}
 
+.contador {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
