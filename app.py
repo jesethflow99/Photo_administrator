@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from blueprints.user.routes import user
 import os
 from dotenv import load_dotenv
+from blueprints.admin.routes import admin
 
 # Cargar variables de entorno
 load_dotenv()
@@ -10,6 +11,7 @@ app = Flask(__name__)
 
 # Registrar Blueprints
 app.register_blueprint(user, url_prefix="/user")
+app.register_blueprint(admin, url_prefix="/admin")
 
 # Clave secreta desde .env
 app.secret_key = os.getenv("SECRET_KEY")

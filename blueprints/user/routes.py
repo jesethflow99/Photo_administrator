@@ -1,8 +1,10 @@
-from flask import Blueprint,render_template,request,flash,redirect,url_for
+from flask import Blueprint,render_template,request,flash,redirect,url_for,session
 import os
 from dotenv import load_dotenv
 from db import User
 from controllers.eventos import ver_galeria
+from blueprints.admin.routes import admin
+
 load_dotenv()
 
 user= Blueprint("user",__name__)
@@ -16,7 +18,12 @@ def index():
     if request.method=="POST":
         username=request.form.get("username")
         token=request.form.get("token")
+        session["username"]=username
+        session["token"]=token
         loged=User.comprobe(username,token)
+        if username=="admin" and token==os.getenv("ADMIN_PASSWORD"):
+            print("ingresando desde admin")
+            return redirect(url_for("admin.index"))
         if loged:
             lista=ver_galeria(username)
             if not lista:
@@ -26,4 +33,9 @@ def index():
         else:
             flash("Usuario o contraseña incorrectos")
             flash("si olvidaste tu contraseña, contacta a Cuve fotogragia Te resolvemos con gusto")
-            return render_template("login.html")
+            return redirect(url_for("login"))
+
+@user.route("/cerrar_sesion")
+def cerrar_sesion():
+    session.clear()
+    return redirect(url_for("login"))

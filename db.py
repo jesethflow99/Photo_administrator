@@ -45,7 +45,7 @@ class Crud(ABC):
 
 # Clase de usuario que hereda de CRUD
 class User(Crud):
-    def __init__(self, username, token):
+    def __init__(self, username):
         self.username = username
         self.token = None
 
@@ -59,7 +59,8 @@ class User(Crud):
         except sqlite3.OperationalError as e:
             print(Fore.RED + f"Error: {e}")
     
-    def read(self):
+    @classmethod
+    def read(cls):
         try:
             with Database() as cur:
                 cur.execute("SELECT * FROM users")
