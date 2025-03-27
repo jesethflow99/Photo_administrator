@@ -31,6 +31,7 @@
         <th scope="col">#</th>
         <th scope="col">Cliente</th>
         <th scope="col">Token</th>
+        <th scope="col">Del</th>
       </tr>
     </thead>
     <tbody>
@@ -40,6 +41,7 @@
           <td>{{loop.index}}</td>
           <td>{{user[0]}}</td>
           <td>{{user[1]}}</td>
+          <td><a href="/admin/eliminar_usuario/{{user[0]}}" class="btn btn-danger" >Eliminar</a></td>
       </tr>
       {% endfor %}
       {% endif %}

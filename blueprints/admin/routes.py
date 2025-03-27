@@ -43,4 +43,11 @@ def agregar_usuarios():
                 user.create()
         flash("Usuarios creados con éxito")
         return redirect(url_for("admin.index"))
-            
+
+@admin.route("/eliminar_usuario/<username>")
+def eliminar_usuario(username):
+    if session.get("username")=="admin" and session.get("token")==os.getenv("ADMIN_PASSWORD"):
+        user=User(username)
+        user.delete()
+        flash("Usuario eliminado con éxito")
+        return redirect(url_for("admin.index"))
