@@ -32,16 +32,18 @@
         <th scope="col">Cliente</th>
         <th scope="col">Token</th>
         <th scope="col">Del</th>
+        <th scope="col">Galeria</th>
       </tr>
     </thead>
     <tbody>
       {% if lista %}
       {% for user in lista %}
-      <tr>
+      <tr class="rows_clients" >
           <td>{{loop.index}}</td>
           <td>{{user[0]}}</td>
           <td>{{user[1]}}</td>
           <td><a href="/admin/eliminar_usuario/{{user[0]}}" class="btn btn-danger" >Eliminar</a></td>
+          <td><a href="/admin/ver_galeria/{{ user[0] }}" class="btn btn-info">Ver Galeria</a></td>
       </tr>
       {% endfor %}
       {% endif %}

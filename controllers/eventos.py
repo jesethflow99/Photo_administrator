@@ -10,8 +10,13 @@ def listar_carpetas():
     return lista
 
 def ver_galeria(username):
-    lista=os.listdir(f"{os.getenv('DIRECTORIO')}/{username}")
-    filtro=["seleccion.txt"]
-    lista=[i for i in lista if i not in filtro]
-    return lista
+    directorio = os.path.join(os.getenv('DIRECTORIO'), username)
+    
+    # Verifica que el directorio exista antes de intentar listar su contenido
+    if not os.path.isdir(directorio):
+        return []
 
+    # Obtiene la lista de archivos y filtra solo los que terminen en .jpg (ignora mayúsculas/minúsculas)
+    lista = [i for i in os.listdir(directorio) if isinstance(i, str) and i.lower().endswith('.jpg')]
+    
+    return lista

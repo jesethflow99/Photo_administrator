@@ -142,11 +142,9 @@ body{
   .container #signup_toggle:checked + .form {
     transform: rotateY(-180deg);
   }
-
-  .alerta{
-    position: fixed;
-    top: 0;
-    right: 0;
-    margin: 20px;
-    padding: 20px;
-  }
+.alert{
+  display: block;
+  position: fixed;
+  z-index: 10;
+  opacity: .5;
+}

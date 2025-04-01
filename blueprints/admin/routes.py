@@ -19,6 +19,15 @@ def index():
         return redirect(url_for("cerrar_sesion"))
 
 
+@admin.route("/ver_galeria/<username>")
+def ver_galeria_admin(username):
+    if session.get("username")=="admin" and session.get("token")==os.getenv("ADMIN_PASSWORD"):
+        lista=ver_galeria(username)
+        if not lista:
+            flash("No tienes fotos en tu galeria")
+            return redirect(url_for("admin.index"))
+        return render_template("photos.html",username=username,lista=lista,title="Galeria de fotos de "+username)
+
             
 @admin.route("/cerrar_sesion")
 def cerrar_sesion():

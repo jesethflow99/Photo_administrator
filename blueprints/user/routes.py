@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 from db import User
 from controllers.eventos import ver_galeria
+from pathlib import Path
 
 load_dotenv()
 
